@@ -34,7 +34,7 @@ export const Statistics = () => {
     statistics.length > 0 ? statistics : defaultStatistics;
 
   return (
-    <section id="statistics" className="py-16 bg-white">
+    <section id="statistics" className="pb-2 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* White Container with Light Blue Border */}
         <div className="bg-white border border-[#3390AF] rounded-lg p-8 md:p-12 max-w-6xl mx-auto">

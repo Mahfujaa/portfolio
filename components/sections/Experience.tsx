@@ -104,13 +104,15 @@ export const Experience = () => {
             <div key={index} className="relative flex flex-col items-center pb-16">
               {/* Experience Card */}
               <div className="bg-[#3390AF] text-white p-8 rounded-2xl w-full text-center">
-                <InlineEditable
-                  value={exp.title}
-                  onSave={(value) => handleItemSave(index, 'title', value)}
-                  placeholder={defaultExperience.items[index]?.title}
-                  className="text-2xl font-bold mb-4"
-                />
-                <div className="mb-4">
+                <div className="[&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                  <InlineEditable
+                    value={exp.title}
+                    onSave={(value) => handleItemSave(index, 'title', value)}
+                    placeholder={defaultExperience.items[index]?.title}
+                    className="text-2xl font-bold mb-4"
+                  />
+                </div>
+                <div className="mb-4 relative [&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
                   <InlineEditable
                     value={exp.description}
                     onSave={(value) => handleItemSave(index, 'description', value)}
@@ -119,18 +121,22 @@ export const Experience = () => {
                     placeholder={defaultExperience.items[index]?.description}
                   />
                 </div>
-                <InlineEditable
-                  value={exp.company}
-                  onSave={(value) => handleItemSave(index, 'company', value)}
-                  placeholder={defaultExperience.items[index]?.company}
-                  className="text-lg font-bold mb-2"
-                />
-                <InlineEditable
-                  value={exp.years}
-                  onSave={(value) => handleItemSave(index, 'years', value)}
-                  placeholder={defaultExperience.items[index]?.years}
-                  className="text-sm text-white"
-                />
+                <div className="[&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                  <InlineEditable
+                    value={exp.company}
+                    onSave={(value) => handleItemSave(index, 'company', value)}
+                    placeholder={defaultExperience.items[index]?.company}
+                    className="text-lg font-bold mb-2"
+                  />
+                </div>
+                <div className="[&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                  <InlineEditable
+                    value={exp.years}
+                    onSave={(value) => handleItemSave(index, 'years', value)}
+                    placeholder={defaultExperience.items[index]?.years}
+                    className="text-sm text-white"
+                  />
+                </div>
               </div>
               
               {/* Vertical Line connecting card to marker */}

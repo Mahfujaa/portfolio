@@ -7,6 +7,7 @@ import { InlineEditable } from '@/components/InlineEditable';
 import { useCallback } from 'react';
 import type { MouseEvent } from 'react';
 import { Twitter, Instagram, Facebook, Linkedin, Youtube } from 'lucide-react';
+import { CTA } from './CTA';
 
 const SECTION_CONFIG = [
   { id: 'hero', label: 'Home' },
@@ -41,19 +42,18 @@ export const Footer = () => {
   }, []);
 
   return (
-    <footer id="footer" className="relative overflow-hidden text-[#0f3a4a]">
+    <footer id="footer" className="relative overflow-hidden text-[#0f3a4a] -mt-44">
       <div className="absolute inset-0 pointer-events-none">
      
         <div
           className="absolute inset-x-0 bottom-0 h-2/3 bg-cover bg-center"
           style={{ backgroundImage: "url('/footerBottom.jpg')" }}
         ></div>
-        <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative container mx-auto px-4 sm:px-8 lg:px-16 py-20 space-y-14  mt-24">
-        <div className="flex flex-col items-center text-center gap-6">
-         
+      <div className="relative container mx-auto px-4 sm:px-8 lg:px-16 pb-20 space-y-14  mt-24">
+        <div className="mt-76 pt-12">
+         <CTA/>
         </div>
 
         <div className="flex flex-col items-center gap-6 ">
@@ -80,45 +80,59 @@ export const Footer = () => {
             ))}
           </div>
 
-          <div className="flex gap-4 justify-center">
-            {portfolio.footer.socialLinks.map((link, index) => {
-              const Icon = SOCIAL_ICONS[index] || Twitter;
-              return (
-                <div
-                  key={index}
-                  className="group w-11 h-11 rounded-full border border-[#0f3a4a]/30 flex items-center justify-center bg-white/60 backdrop-blur-sm shadow-sm hover:border-[#3390AF] hover:-translate-y-0.5 transition-all"
-                >
-                  <Icon className="h-4 w-4 text-[#3390AF] group-hover:text-[#0f3a4a] transition-colors" />
-                  <span className="sr-only">{link}</span>
-                  <InlineEditable
-                    value={link}
-                    onSave={async (value) => {
-                      const updatedLinks = portfolio.footer.socialLinks.map((l, i) => (i === index ? value : l));
-                      await handleSave('socialLinks', updatedLinks);
-                    }}
-                    className="hidden"
-                  />
-                </div>
-              );
-            })}
+          <div className="flex gap-6 pt-4 flex-wrap justify-center">
+            {(() => {
+              const defaultSocialLinks = [
+                'https://dribbble.com',
+                'https://behance.net',
+                'https://linkedin.com',
+                'https://twitter.com',
+                'https://instagram.com',
+              ];
+              const socialLinks = portfolio.footer.socialLinks?.length 
+                ? portfolio.footer.socialLinks 
+                : defaultSocialLinks;
+              
+              return socialLinks.map((link, index) => {
+                const IconComponent = SOCIAL_ICONS[index] || Twitter;
+                if (!IconComponent) return null;
+                return (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center gap-2"
+                  >
+                    <a
+                      href={link || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-[#3390AF] rounded-full flex items-center justify-center hover:bg-[#2a7a95] transition-colors"
+                      aria-label={`Social link ${index + 1}`}
+                    >
+                      <IconComponent className="h-5 w-5 text-white" />
+                    </a>
+                    <InlineEditable
+                      value={link || ''}
+                      displayValue=""
+                      className="w-full"
+                      onSave={async (value) => {
+                        const sourceLinks = portfolio.footer.socialLinks?.length
+                          ? portfolio.footer.socialLinks
+                          : defaultSocialLinks;
+                        const updatedLinks = sourceLinks.map((l, i) =>
+                          i === index ? value : l
+                        );
+                        await handleSave('socialLinks', updatedLinks);
+                      }}
+                      placeholder={defaultSocialLinks[index] ?? 'https://'}
+                    />
+                  </div>
+                );
+              });
+            })()}
           </div>
         </div>
       </div>
 
-      <div className="relative bg-[#1a6f8b] text-white/80 py-4">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-4 text-sm">
-          <InlineEditable
-            value={portfolio.footer.copyright}
-            onSave={(value) => handleSave('copyright', value)}
-            className="text-center lg:text-left"
-          />
-          <InlineEditable
-            value={portfolio.footer.credit}
-            onSave={(value) => handleSave('credit', value)}
-            className="text-center lg:text-right"
-          />
-        </div>
-      </div>
     </footer>
   );
 };

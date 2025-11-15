@@ -107,25 +107,31 @@ export const Expertise = () => {
             </div>
 
             <div className="space-y-6 text-center lg:text-left">
-              <InlineEditable
-                value={expertise.label}
-                onSave={(value) => handleSave('label', value)}
-                placeholder={defaultExpertise.label}
-                className="text-sm uppercase tracking-[0.35rem] text-white/80"
-              />
-              <InlineEditable
-                value={expertise.title}
-                onSave={(value) => handleSave('title', value)}
-                placeholder={defaultExpertise.title}
-                className="text-4xl md:text-5xl font-bold"
-              />
-              <InlineEditable
-                value={expertise.description}
-                onSave={(value) => handleSave('description', value)}
-                as="textarea"
-                className="text-white/90 leading-relaxed"
-                placeholder={defaultExpertise.description}
-              />
+              <div className="[&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                <InlineEditable
+                  value={expertise.label}
+                  onSave={(value) => handleSave('label', value)}
+                  placeholder={defaultExpertise.label}
+                  className="text-sm uppercase tracking-[0.35rem] text-white/80"
+                />
+              </div>
+              <div className="[&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                <InlineEditable
+                  value={expertise.title}
+                  onSave={(value) => handleSave('title', value)}
+                  placeholder={defaultExpertise.title}
+                  className="text-4xl md:text-5xl font-bold"
+                />
+              </div>
+              <div className="relative [&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                <InlineEditable
+                  value={expertise.description}
+                  onSave={(value) => handleSave('description', value)}
+                  as="textarea"
+                  className="text-white/90 leading-relaxed"
+                  placeholder={defaultExpertise.description}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -154,19 +160,23 @@ export const Expertise = () => {
             {skillsToRender.map((skill, index) => (
               <div key={index}>
                 <div className="flex items-center justify-between mb-3 gap-4">
-                  <InlineEditable
-                    value={skill.name}
-                    onSave={(value) => handleSkillSave(index, 'name', value)}
-                    placeholder={defaultExpertise.skills[index]?.name}
-                    className="text-base md:text-lg font-semibold text-gray-800"
-                  />
-                  <div className="flex items-baseline gap-1">
+                  <div className="[&_button]:!opacity-100 [&_button]:bg-gray-100 [&_button]:hover:bg-gray-200 [&_button_svg]:text-[#3390AF]">
                     <InlineEditable
-                      value={String(skill.percentage)}
-                      onSave={(value) => handleSkillSave(index, 'percentage', value)}
-                      placeholder={String(defaultExpertise.skills[index]?.percentage)}
-                      className="text-sm text-gray-600 text-right min-w-[2ch]"
+                      value={skill.name}
+                      onSave={(value) => handleSkillSave(index, 'name', value)}
+                      placeholder={defaultExpertise.skills[index]?.name}
+                      className="text-base md:text-lg font-semibold text-gray-800"
                     />
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <div className="[&_button]:!opacity-100 [&_button]:bg-gray-100 [&_button]:hover:bg-gray-200 [&_button_svg]:text-[#3390AF]">
+                      <InlineEditable
+                        value={String(skill.percentage)}
+                        onSave={(value) => handleSkillSave(index, 'percentage', value)}
+                        placeholder={String(defaultExpertise.skills[index]?.percentage)}
+                        className="text-sm text-gray-600 text-right min-w-[2ch]"
+                      />
+                    </div>
                     <span className="text-sm text-gray-500">%</span>
                   </div>
                 </div>

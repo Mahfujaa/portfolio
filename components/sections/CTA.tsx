@@ -37,10 +37,10 @@ export const CTA = () => {
       className="relative overflow-hidden"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="absolute inset-0 bg-white/55"></div>
-      <div className="relative container mx-auto px-4 sm:px-8 lg:px-16 py-24">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
-          <div className="space-y-5 max-w-2xl text-[#0f3a4a]">
+      <div className="absolute "></div>
+      <div className="relative container mx-auto px-4 sm:px-8 lg:px-16 ">
+        <div className="flex flex-col lg:flex-row items-center  justify-between gap-12">
+          <div className="space-y-5 flex flex-col items-start max-w-2xl text-[#0f3a4a]">
             <InlineEditable
               value={cta.label}
               onSave={(value) => handleSave('label', value)}
@@ -57,7 +57,7 @@ export const CTA = () => {
               value={cta.description}
               onSave={(value) => handleSave('description', value)}
               as="textarea"
-              className="text-[#0f3a4a]/80 leading-relaxed"
+              className="text-[#0f3a4a]/80 leading-relaxed text-start"
               placeholder={defaultCTA.description}
             />
           </div>

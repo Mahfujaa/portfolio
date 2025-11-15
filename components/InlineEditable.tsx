@@ -99,7 +99,8 @@ export const InlineEditable = ({
       </span>
       <button
         onClick={() => setIsLocalEditing(true)}
-        className={`opacity-100 transition-opacity flex-shrink-0 p-1 hover:bg-gray-100 rounded ml-1 ${isTextarea ? 'absolute top-0 right-0' : ''}`}
+        className={`opacity-100 !opacity-100 transition-opacity flex-shrink-0 p-1 hover:bg-gray-100 rounded ml-1 ${isTextarea ? 'absolute top-0 right-0' : ''}`}
+        style={{ opacity: 1 }}
         type="button"
         aria-label="Edit"
       >

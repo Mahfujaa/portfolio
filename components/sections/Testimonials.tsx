@@ -79,7 +79,7 @@ export const Testimonials = () => {
     testimonials.items?.length ? testimonials.items : defaultTestimonials.items;
 
   return (
-    <section id="testimonials" className="py-24 bg-white">
+    <section id="testimonials" className="pt-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-6 max-w-lg">
@@ -107,13 +107,15 @@ export const Testimonials = () => {
           <div className="flex flex-col items-center gap-10">
             <div className="relative bg-[#3390AF] text-white rounded-[32px] px-10 sm:px-14 py-16 shadow-2xl w-full max-w-[420px] text-center">
               <Quote className="h-16 w-16 text-white/20 mx-auto mb-10" />
-              <InlineEditable
-                value={testimonialsToRender[0]?.text ?? defaultTestimonials.items[0].text}
-                onSave={(value) => handleItemSave(0, 'text', value)}
-                as="textarea"
-                className="text-white leading-relaxed mb-10 min-h-[130px]"
-                placeholder={defaultTestimonials.items[0].text}
-              />
+              <div className="relative [&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                <InlineEditable
+                  value={testimonialsToRender[0]?.text ?? defaultTestimonials.items[0].text}
+                  onSave={(value) => handleItemSave(0, 'text', value)}
+                  as="textarea"
+                  className="text-white leading-relaxed mb-10 min-h-[130px]"
+                  placeholder={defaultTestimonials.items[0].text}
+                />
+              </div>
 
               <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-20 h-20">
                 <ImageUpload
@@ -128,18 +130,22 @@ export const Testimonials = () => {
             </div>
 
             <div className="text-center">
-              <InlineEditable
-                value={testimonialsToRender[0]?.author ?? defaultTestimonials.items[0].author}
-                onSave={(value) => handleItemSave(0, 'author', value)}
-                placeholder={defaultTestimonials.items[0].author}
-                className="text-[#3390AF] font-semibold text-xl"
-              />
-              <InlineEditable
-                value={testimonialsToRender[0]?.role ?? defaultTestimonials.items[0].role}
-                onSave={(value) => handleItemSave(0, 'role', value)}
-                placeholder={defaultTestimonials.items[0].role ?? 'Enter role here...'}
-                className="text-gray-500 text-sm"
-              />
+              <div className="[&_button]:!opacity-100 [&_button]:bg-gray-100 [&_button]:hover:bg-gray-200 [&_button_svg]:text-[#3390AF]">
+                <InlineEditable
+                  value={testimonialsToRender[0]?.author ?? defaultTestimonials.items[0].author}
+                  onSave={(value) => handleItemSave(0, 'author', value)}
+                  placeholder={defaultTestimonials.items[0].author}
+                  className="text-[#3390AF] font-semibold text-xl"
+                />
+              </div>
+              <div className="[&_button]:!opacity-100 [&_button]:bg-gray-100 [&_button]:hover:bg-gray-200 [&_button_svg]:text-[#3390AF]">
+                <InlineEditable
+                  value={testimonialsToRender[0]?.role ?? defaultTestimonials.items[0].role}
+                  onSave={(value) => handleItemSave(0, 'role', value)}
+                  placeholder={defaultTestimonials.items[0].role ?? 'Enter role here...'}
+                  className="text-gray-500 text-sm"
+                />
+              </div>
             </div>
           </div>
         </div>

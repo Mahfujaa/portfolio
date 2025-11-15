@@ -98,7 +98,7 @@ export const Services = () => {
               {/* Top Tab/Notch */}
               <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-24 h-12 bg-[#3390AF] rounded-t-full">
                 <div className="w-full h-full flex items-center justify-center pt-2">
-                  <div className="w-8 h-8 border-2 border-white rounded flex items-center justify-center">
+                  <div className="w-8 h-8 border-2 border-white rounded flex items-center justify-center [&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
                     <InlineEditable
                       value={service.icon}
                       onSave={(value) => handleItemSave(index, 'icon', value)}
@@ -111,13 +111,15 @@ export const Services = () => {
 
               {/* Content */}
               <div className="mt-4 text-center">
-                <InlineEditable
-                  value={service.title}
-                  onSave={(value) => handleItemSave(index, 'title', value)}
-                  placeholder={defaultServices.items[index]?.title}
-                  className="text-2xl font-bold text-white mb-4"
-                />
-                <div className="mb-6">
+                <div className="[&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
+                  <InlineEditable
+                    value={service.title}
+                    onSave={(value) => handleItemSave(index, 'title', value)}
+                    placeholder={defaultServices.items[index]?.title}
+                    className="text-2xl font-bold text-white mb-4"
+                  />
+                </div>
+                <div className="mb-6 relative [&_button]:!opacity-100 [&_button]:bg-white/20 [&_button]:hover:bg-white/30 [&_button_svg]:text-white">
                   <InlineEditable
                     value={service.description}
                     onSave={(value) => handleItemSave(index, 'description', value)}

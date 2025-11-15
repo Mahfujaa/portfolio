@@ -59,7 +59,6 @@ export default function Home() {
       <Experience />
       <Expertise />
       <Testimonials />
-      <CTA />
       <Footer />
     </main>
   );
